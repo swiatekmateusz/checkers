@@ -43,7 +43,7 @@ class Net {
             this.game.swapMove(data.lastMove)
           }
         }
-      }, 500)
+      }, 1000)
     });
   }
 
@@ -105,7 +105,7 @@ class Net {
           } else if (!data.player2.connected) {
             $('.login').remove()
             // Interval z sprwadzeniem 2giego grascza
-            this.interval = setInterval(this.checkAreUsers, 500)
+            this.interval = setInterval(this.checkAreUsers, 1000)
             this.game.setCheckers(data.checkers, data.player.color, data.player.move, true)
           } else if (data.player2.connected) {
             $('.login').remove()
