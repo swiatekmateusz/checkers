@@ -2,9 +2,10 @@ const http = require('http');
 const fs = require('fs');
 const querystring = require('querystring');
 const path = require('path');
+const PORT = process.env.PORT || 3000
 
 
-let restarted = false
+let lastMove = null
 let game = {
   player1: {
     connected: false,
@@ -30,12 +31,13 @@ let game = {
   ]
 }
 
-let lastMove = null
 
 const httpServer = http.createServer(requestResponseHandler);
-httpServer.listen(3000, () => {
+
+httpServer.listen(PORT, () => {
   console.log('Node.JS static file server is listening on port 3000')
 })
+
 function requestResponseHandler(request, response) {
   //console.log(`Request came: ${request.url}`);
   if (request.method === "GET") {
@@ -54,7 +56,6 @@ function requestResponseHandler(request, response) {
 
       switch (post.action) {
         case "RESET_SERVER":
-          restarted = true
           game = {
             player1: {
               connected: false,
