@@ -43,8 +43,8 @@ class Net {
             this.game.swapMove(data.lastMove)
           }
         }
-      }, 1000)
-    });
+      })
+    }, 1000);
   }
 
   checkAreUsers = () => {

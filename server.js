@@ -53,7 +53,6 @@ function requestResponseHandler(request, response) {
     });
     request.on('end', function () {
       const post = querystring.parse(body);
-
       switch (post.action) {
         case "RESET_SERVER":
           game = {
